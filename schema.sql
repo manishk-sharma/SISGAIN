@@ -1,8 +1,8 @@
 -- Sisgain Enterprise Database Schema
 -- Compatible with MySQL 5.7+ and 8.0+
 
-CREATE DATABASE IF NOT EXISTS `sisgain_db` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `sisgain_db`;
+-- CREATE DATABASE IF NOT EXISTS `sisgain_db` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+-- USE `sisgain_db`;
 
 -- 1. Admin Table
 DROP TABLE IF EXISTS `admins`;
