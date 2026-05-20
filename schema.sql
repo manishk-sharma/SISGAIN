@@ -26,7 +26,7 @@ CREATE TABLE `services` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `slug` VARCHAR(100) NOT NULL UNIQUE,
   `title` VARCHAR(150) NOT NULL,
-  `short_description TEXT` NOT NULL,
+  `short_description` TEXT NOT NULL,
   `long_description` LONGTEXT NOT NULL,
   `icon` VARCHAR(100) DEFAULT 'cpu',
   `kpi_metric` VARCHAR(100) DEFAULT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE `services` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Seed Services
-INSERT INTO `services` (`slug`, `title`, `short_description TEXT`, `long_description`, `icon`, `kpi_metric`, `kpi_value`, `meta_title`, `meta_description`) VALUES
+INSERT INTO `services` (`slug`, `title`, `short_description`, `long_description`, `icon`, `kpi_metric`, `kpi_value`, `meta_title`, `meta_description`) VALUES
 ('ai-integration', 'AI & Machine Learning Integration', 'Embed cognitive intelligence, custom LLMs, predictive modeling, and agentic workflows into your core business operations.', 'Our AI Integration services scale from natural language interfaces to advanced predictive analytics. We construct enterprise cognitive architectures that securely leverage your proprietary records to automate reasoning, accelerate decision-making, and predict customer behavior.', 'brain-circuit', 'Decision Speed Improvement', '10x Faster', 'Enterprise AI Integration Services & LLM Deployments | Sisgain', 'Integrate cognitive intelligence, LLMs, and predictive models into your enterprise processes. Modernize workflows with agentic AI applications.'),
 ('cloud-transformation', 'Cloud Infrastructure Modernization', 'Architect hybrid, multicloud, and cloud-native environments built for extreme reliability, absolute security, and zero friction.', 'We redesign and migrate legacy servers to modern Kubernetes containers, serverless execution flows, and self-healing multi-region configurations. Achieve infinite scale and sub-second failovers without ballooning infrastructure operational budgets.', 'cloud-lightning', 'Infrastructure Overhead Cut', '35% Saved', 'Enterprise Cloud Transformation & DevOps | Sisgain', 'Redesign infrastructure with multicloud and cloud-native systems. Scalable DevOps, Kubernetes migrations, and optimized cloud architectures.'),
 ('workflow-automation', 'Hyperautomation & RPA Workflows', 'Establish automated process flows and intelligent robots to eliminate manual friction and speed up business speed.', 'Transform complex cross-department activities into automated, error-free execution loops. We combine Robotic Process Automation (RPA) with AI decision trees to manage compliance audits, supply logs, and back-office reports around the clock.', 'cpu-setting', 'Manual Operations Reduced', '71% Less', 'Intelligent Workflow Automation & RPA Consulting | Sisgain', 'Eliminate manual processes with hyperautomation. Intelligent RPA robots, AI decision routes, and cross-system database syncs.'),
