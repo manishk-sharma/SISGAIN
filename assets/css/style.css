@@ -1,0 +1,858 @@
+/* ============================================================
+   SISGAIN — Premium Enterprise Design System
+   Version: 2.0 | Production-Ready
+   ============================================================ */
+
+/* ─── 1. TYPOGRAPHY IMPORTS ─────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/* ─── 2. DESIGN TOKENS (CSS Custom Properties) ──────────────── */
+:root {
+  /* Backgrounds */
+  --color-bg-dark: #060816;
+  --color-bg-darker: #0a0d1a;
+  --color-bg-card: #0D1324;
+  --color-bg-light: #ffffff;
+  --color-bg-light-alt: #f8f9fc;
+
+  /* Text */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+  --color-text-dark: #0f0f0f;
+
+  /* Accents */
+  --color-accent-blue: #3b82f6;
+  --color-accent-cyan: #06b6d4;
+  --color-accent-purple: #8b5cf6;
+  --color-accent-emerald: #10b981;
+
+  /* Borders */
+  --color-border-light: rgba(255, 255, 255, 0.06);
+  --color-border-dark: rgba(255, 255, 255, 0.12);
+
+  /* Spacing */
+  --spacing-section: clamp(80px, 10vw, 160px);
+  --spacing-section-sm: clamp(48px, 6vw, 96px);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+
+  /* Shadows */
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.12);
+  --shadow-card-hover: 0 12px 48px rgba(0, 0, 0, 0.2);
+  --shadow-glow-blue: 0 0 60px rgba(59, 130, 246, 0.15);
+
+  /* Transitions */
+  --transition-base: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.2s ease;
+}
+
+/* ─── 3. GLOBAL RESETS & BASE ────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-dark);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ─── 4. TYPOGRAPHY SYSTEM ───────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3.5vw, 3rem);
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2vw, 2rem);
+  line-height: 1.3;
+}
+
+h4 {
+  font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+  line-height: 1.35;
+}
+
+p {
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+/* ─── 5. SELECTION STYLING ───────────────────────────────────── */
+::selection {
+  background: rgba(59, 130, 246, 0.3);
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background: rgba(59, 130, 246, 0.3);
+  color: #ffffff;
+}
+
+/* ─── 6. CUSTOM SCROLLBAR ────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-blue);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #1e293b var(--color-bg-dark);
+}
+
+/* ─── 7. GLASSMORPHISM CARDS ─────────────────────────────────── */
+.glass-card {
+  background: rgba(13, 19, 36, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-xl);
+  transition: var(--transition-base);
+}
+
+.glass-card:hover {
+  border-color: rgba(59, 130, 246, 0.25);
+  box-shadow: var(--shadow-glow-blue);
+  transform: translateY(-6px);
+}
+
+/* ─── 8. GLASS NAVIGATION ────────────────────────────────────── */
+.glass-nav {
+  background: rgba(6, 8, 22, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--color-border-light);
+  transition: all 0.3s ease;
+}
+
+.glass-nav.scrolled {
+  background: rgba(6, 8, 22, 0.95);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* ─── 9. PREMIUM BUTTONS ─────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-cyan));
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.35);
+}
+
+.btn-primary .btn-arrow {
+  transition: transform 0.3s ease;
+}
+
+.btn-primary:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-primary:hover::after {
+  opacity: 1;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  background: transparent;
+  color: var(--color-text-primary);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid var(--color-border-dark);
+  border-radius: 9999px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+.btn-secondary:hover {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: var(--color-accent-blue);
+  color: var(--color-accent-blue);
+  transform: scale(1.02);
+}
+
+.btn-secondary .btn-arrow {
+  transition: transform 0.3s ease;
+}
+
+.btn-secondary:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 4px;
+  background: transparent;
+  color: var(--color-accent-blue);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition-fast);
+  position: relative;
+}
+
+.btn-ghost::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  width: 0;
+  height: 2px;
+  background: var(--color-accent-blue);
+  transition: width 0.3s ease;
+}
+
+.btn-ghost:hover::after {
+  width: calc(100% - 8px);
+}
+
+.btn-ghost .btn-arrow {
+  transition: transform 0.3s ease;
+}
+
+.btn-ghost:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+/* ─── 10. TEXT GLOW UTILITIES ────────────────────────────────── */
+.text-glow-blue {
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+}
+
+.text-glow-purple {
+  text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+}
+
+/* ─── 11. ANIMATED GRADIENT BACKGROUNDS ──────────────────────── */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.gradient-bg-animated {
+  background: linear-gradient(
+    -45deg,
+    var(--color-bg-dark),
+    #0c1633,
+    #0a192f,
+    var(--color-bg-darker)
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+/* Glow Orbs */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+.glow-orb-blue {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+}
+
+.glow-orb-cyan {
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.18) 0%, transparent 70%);
+}
+
+.glow-orb-purple {
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.18) 0%, transparent 70%);
+}
+
+/* ─── 12. MARQUEE / LOGO SLIDER ──────────────────────────────── */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-container {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  -webkit-mask-image: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+}
+
+.marquee-content {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 100%;
+  animation: marquee 30s linear infinite;
+  will-change: transform;
+}
+
+.marquee-container:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+/* ─── 13. SECTION BACKGROUNDS ────────────────────────────────── */
+.section-dark {
+  background: var(--color-bg-dark);
+}
+
+.section-darker {
+  background: var(--color-bg-darker);
+}
+
+.section-light {
+  background: var(--color-bg-light);
+  color: var(--color-text-dark);
+}
+
+.section-light p {
+  color: var(--color-text-muted);
+}
+
+.section-light-alt {
+  background: var(--color-bg-light-alt);
+  color: var(--color-text-dark);
+}
+
+.section-light-alt p {
+  color: var(--color-text-muted);
+}
+
+/* ─── 14. GRID OVERLAY BACKGROUND ────────────────────────────── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ─── 15. ORBIT ANIMATIONS ───────────────────────────────────── */
+@keyframes rotate-clockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rotate-counter {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+.orbit-center {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orbit-ring {
+  position: absolute;
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orbit-ring-1 {
+  width: 200px;
+  height: 200px;
+  animation: rotate-clockwise 40s linear infinite;
+}
+
+.orbit-ring-2 {
+  width: 340px;
+  height: 340px;
+  animation: rotate-counter 60s linear infinite;
+}
+
+.orbit-ring-3 {
+  width: 480px;
+  height: 480px;
+  animation: rotate-clockwise 80s linear infinite;
+}
+
+.orbit-node {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  background: rgba(13, 19, 36, 0.9);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-base);
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.2);
+}
+
+.orbit-node:hover {
+  transform: scale(1.25);
+  border-color: var(--color-accent-cyan);
+  box-shadow: 0 0 24px rgba(6, 182, 212, 0.6);
+  background: var(--color-bg-card);
+}
+
+/* ─── 16. FRAMEWORK TIMELINE / ROADMAP ───────────────────────── */
+.framework-timeline {
+  position: relative;
+}
+
+.framework-timeline::before {
+  content: '';
+  position: absolute;
+  left: 31px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg,
+    rgba(59, 130, 246, 0.05) 0%,
+    rgba(59, 130, 246, 0.8) 30%,
+    rgba(6, 182, 212, 0.8) 70%,
+    rgba(6, 182, 212, 0.05) 100%
+  );
+}
+
+@media (min-width: 1024px) {
+  .framework-timeline::before {
+    left: 50%;
+    top: 32px;
+    bottom: auto;
+    width: 80%;
+    height: 2px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg,
+      rgba(59, 130, 246, 0.05) 0%,
+      rgba(59, 130, 246, 0.8) 30%,
+      rgba(6, 182, 212, 0.8) 70%,
+      rgba(6, 182, 212, 0.05) 100%
+    );
+  }
+}
+
+/* ─── 17. BENTO GRID GLOW EFFECT ─────────────────────────────── */
+.bento-glow-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.bento-glow-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    600px circle at var(--x, 50%) var(--y, 50%),
+    rgba(59, 130, 246, 0.08),
+    transparent 40%
+  );
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  opacity: 0;
+  z-index: 1;
+}
+
+.bento-glow-container:hover::after {
+  opacity: 1;
+}
+
+/* ─── 18. COUNTER ANIMATION ──────────────────────────────────── */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.counter-animate {
+  animation: count-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── 19. STAGGER ANIMATION CLASSES ──────────────────────────── */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+
+/* ─── 20. HOVER EFFECTS ──────────────────────────────────────── */
+.hover-lift {
+  transition: var(--transition-base);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.hover-scale {
+  transition: var(--transition-base);
+}
+
+.hover-scale:hover {
+  transform: scale(1.03);
+}
+
+.hover-glow {
+  transition: var(--transition-base);
+}
+
+.hover-glow:hover {
+  box-shadow: var(--shadow-glow-blue);
+}
+
+.hover-border {
+  transition: var(--transition-base);
+}
+
+.hover-border:hover {
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+/* ─── 21. LINK UNDERLINE ANIMATION ───────────────────────────── */
+.link-underline {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-accent-blue);
+  border-radius: 1px;
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* ─── 22. CARD VARIANTS ──────────────────────────────────────── */
+.card-dark {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-xl);
+  transition: var(--transition-base);
+}
+
+.card-dark:hover {
+  border-color: rgba(59, 130, 246, 0.2);
+  box-shadow: var(--shadow-glow-blue);
+}
+
+.card-light {
+  background: var(--color-bg-light);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-base);
+}
+
+.card-light:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-4px);
+}
+
+.card-bordered {
+  background: transparent;
+  border: 2px solid var(--color-border-dark);
+  border-radius: var(--radius-xl);
+  transition: var(--transition-base);
+}
+
+.card-bordered:hover {
+  border-color: var(--color-accent-blue);
+  box-shadow: 0 0 40px rgba(59, 130, 246, 0.1);
+}
+
+.card-gradient {
+  background: linear-gradient(135deg, var(--color-bg-card), rgba(59, 130, 246, 0.08));
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-xl);
+  transition: var(--transition-base);
+}
+
+.card-gradient:hover {
+  border-color: rgba(59, 130, 246, 0.3);
+  transform: translateY(-4px);
+}
+
+/* ─── 23. LOADING / SKELETON UTILITIES ───────────────────────── */
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes skeleton-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.04) 25%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.04) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.8s ease-in-out infinite;
+  border-radius: var(--radius-md);
+}
+
+.skeleton-text {
+  height: 16px;
+  margin-bottom: 12px;
+  border-radius: var(--radius-sm);
+}
+
+.skeleton-heading {
+  height: 32px;
+  width: 60%;
+  margin-bottom: 16px;
+  border-radius: var(--radius-sm);
+}
+
+.skeleton-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.skeleton-card {
+  height: 200px;
+  border-radius: var(--radius-xl);
+}
+
+/* ─── 24. PAGE TRANSITIONS ───────────────────────────────────── */
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes page-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.page-enter {
+  animation: page-enter 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.page-fade {
+  animation: page-fade-in 0.4s ease forwards;
+}
+
+/* ─── 25. RESPONSIVE UTILITIES ───────────────────────────────── */
+
+/* Hide/Show at breakpoints */
+.hide-mobile {
+  display: none;
+}
+
+.hide-desktop {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .hide-mobile {
+    display: block;
+  }
+  .hide-desktop {
+    display: none;
+  }
+}
+
+/* Responsive text sizing utility */
+.text-responsive-sm {
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+}
+
+.text-responsive-base {
+  font-size: clamp(1rem, 1.8vw, 1.125rem);
+}
+
+.text-responsive-lg {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+}
+
+.text-responsive-xl {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.text-responsive-2xl {
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+}
+
+/* ─── 26. GRADIENT TEXT UTILITIES ────────────────────────────── */
+.text-gradient-blue {
+  background: linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-purple {
+  background: linear-gradient(135deg, var(--color-accent-purple), var(--color-accent-blue));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-emerald {
+  background: linear-gradient(135deg, var(--color-accent-emerald), var(--color-accent-cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ─── 27. DIVIDER UTILITIES ──────────────────────────────────── */
+.divider-gradient {
+  height: 1px;
+  border: none;
+  background: linear-gradient(90deg, transparent, var(--color-border-dark), transparent);
+}
+
+.divider-glow {
+  height: 1px;
+  border: none;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(59, 130, 246, 0.4),
+    transparent
+  );
+}
+
+/* ─── 28. FOCUS & ACCESSIBILITY ──────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-accent-blue);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .marquee-content {
+    animation: none;
+  }
+
+  .orbit-ring-1,
+  .orbit-ring-2,
+  .orbit-ring-3 {
+    animation: none;
+  }
+}
+
+/* ─── 29. PRINT STYLES ──────────────────────────────────────── */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  .glass-nav,
+  .glow-orb,
+  .grid-bg {
+    display: none !important;
+  }
+}
